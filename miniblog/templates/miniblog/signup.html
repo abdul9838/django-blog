@@ -1,0 +1,29 @@
+{% extends "miniblog/base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    form label {
+        color: rgb(211, 196, 196);
+    }
+</style>
+        <div class="col-sm-6 mx-auto mt-5">
+            <form action="" class="p-4 border rounded w-full" method="post">
+                {% csrf_token %}
+                <h2 class='text-white'>Login Form</h2>
+                {% for fm in form %}
+                <div class="my-3">
+                    {{ fm.label_tag }}
+                    {{ fm }}
+                    {{ fm.errors }}
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    </div>
+<script>
+    const inputs = document.getElementsByTagName('input');
+    for (const input of inputs) {
+        input.classList.add('form-control');
+    }
+</script>
+{% endblock content %}
